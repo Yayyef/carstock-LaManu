@@ -1,0 +1,30 @@
+﻿@{
+	ViewData["Title"] = "Stock";
+	var carmodels = ViewData["Carmodel"] as List<Carmodel>;
+}
+
+<h2>Stock</h2>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th>Image</th>
+			<th>Brand</th>
+			<th>Model</th>
+			<th>Price</th>
+			<th>Stock</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var carmodel in carmodels)
+		{
+			<tr>
+			<td><img src="@carmodel.Image" style="height:50px; width:75px;"/></td>
+			<td>@carmodel.Brand</td>
+			<td>@carmodel.Model</td>
+			<td>@carmodel.Price €</td>
+			<td>Stock</td>
+			</tr>
+		}
+	</tbody>
+</table>
