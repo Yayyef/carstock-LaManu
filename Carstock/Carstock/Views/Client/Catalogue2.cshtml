@@ -1,0 +1,93 @@
+﻿@model ClientCatalogueViewModel
+@{
+    int idModel = 0;
+}
+
+
+<p>Stock = @Model.Cars.Where(c=> c.IdModel == 3).Count()</p>
+
+@*BARRE DE NAVIGATION POUR LES FILTRES*@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        @*BRAND*@
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Brand
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" asp-route-type="@Model.SelectedType" asp-route-category="@Model.SelectedCategory">All</a></li>
+                        @foreach (var brand in @Model.Brands)
+                        {
+                            <li><a class="dropdown-item" asp-route-brand="@brand" asp-route-type="@Model.SelectedType" asp-route-category="@Model.SelectedCategory">@brand</a></li>
+                        }
+          </ul>
+        </li>
+        @*TYPE*@
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Type
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" asp-route-brand="@Model.SelectedBrand" asp-route-category="@Model.SelectedCategory">All</a></li>
+                        @foreach (var type in Model.Types)
+                        {
+                            <li><a class="dropdown-item" asp-route-brand="@Model.SelectedBrand" asp-route-type="@type" asp-route-category="@Model.SelectedCategory">@type</a></li>
+                        }
+          </ul>
+        </li>
+        @*CATEGORY*@
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" asp-route-brand="@Model.SelectedBrand" asp-route-type="@Model.SelectedType">All</a></li>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li><a class="dropdown-item" asp-route-brand="@Model.SelectedBrand" asp-route-type="@Model.SelectedType" asp-route-category="@category">@category</a></li>
+                        }
+          </ul>
+        </li>
+        @*ZONE DES TAGS*@
+        <li><a asp-route-Type="@Model.SelectedType" asp-route-category="@Model.SelectedCategory"><span class="badge bg-danger">@Model.SelectedBrand</span></a></li>
+        <li><a asp-route-brand="@Model.SelectedBrand" asp-route-category="@Model.SelectedCategory"><span class="badge bg-danger">@Model.SelectedType</span></a></li>
+        <li><a asp-route-brand="@Model.SelectedBrand" asp-route-type="@Model.SelectedType"><span class="badge bg-danger">@Model.SelectedCategory</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+@*LES CARTES REPRESENTANT LES MODELES DE VOITURE*@
+<div class="d-flex flex-wrap mx-auto">
+    @foreach (var carmodel in Model.Carmodels)
+        {
+        idModel = carmodel.IdModel;
+        <div class="card col-1 col-md-2 col-lg-3" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@carmodel.Brand @carmodel.Model</h5>
+                    <p class="card-text">@carmodel.Description</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span class="badge bg-secondary">@carmodel.Category.ToUpper()</span><span class="badge bg-secondary">@carmodel.Type.ToUpper()</span></li>
+                    <li class="list-group-item">@carmodel.Price €</li>
+                </ul>
+                <div class="card-body">
+                    <a asp-controller="Client" asp-action="Checkout" class="btn btn-primary">Buy</a>
+                    @*En fonction du nombre de voitures du modèle présentes dans la liste, on affiche en stock ou rupture.*@
+                @if (@Model.Cars.Where(c=> c.IdModel == idModel).Count() > 0)
+                {
+                    <span class="badge bg-warning">@Model.Cars.Where(c=> c.IdModel == idModel).Count() En Stock</span>
+                } else
+                {
+                    <span class="badge bg-danger">RUPTURE</span>
+                }
+                </div>
+            </div>
+        }
+</div>

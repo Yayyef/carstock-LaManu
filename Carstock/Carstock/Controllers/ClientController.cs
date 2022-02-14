@@ -19,7 +19,8 @@ namespace Carstock.Controllers
             return View();
         }
 
-        public IActionResult Catalogue(string category, string brand, string type)
+        // Je rends les paramètres nullables pour mes ViewData.
+        public IActionResult Catalogue(string? category = null, string? brand = null, string? type = null)
         {
             // Je récupère les marques de voitures avec Select() mais seulement lorsqu'elles sont distinctes avec Distinct()
             var brands = _context.Carmodels.Select(b => b.Brand).Distinct();
@@ -33,25 +34,41 @@ namespace Carstock.Controllers
             // Comment faire la même chose avec la syntaxe avec des Where?
             var carModels = from c in _context.Carmodels select c;
 
-            if (!String.IsNullOrEmpty(brand))
-            {
-                carModels = carModels.Where(b => b.Brand == brand);
-                ViewData["selectedBrand"] = brand;
-            }
-            if (!String.IsNullOrEmpty(type))
-            {
-                carModels = carModels.Where(b => b.Type == type);
-                ViewData["selectedType"] = type;
-            }
-            if (!String.IsNullOrEmpty(category))
-            {
-                carModels = carModels.Where(b => b.Category == category);
-                ViewData["selectedCategory"] = category;
-            }
+            // J'envoie sytématiquement le paramètre à la vue en ViewData pour permettre les un filtrage selon plusieurs critères. Il sont récupérés dans l'url grâce aux asp-route- dans le html.
 
-           
-
+            ViewData["selectedBrand"] = brand;
+            ViewData["selectedType"] = type;
+            ViewData["selectedCategory"] = category;
+            // On évite les if avec des ternaires.
+            carModels = (!String.IsNullOrEmpty(brand)) ? carModels.Where(b => b.Brand == brand) : carModels;
+            carModels = (!String.IsNullOrEmpty(type)) ? carModels.Where(b => b.Type == type) : carModels;
+            carModels = (!String.IsNullOrEmpty(category)) ? carModels.Where(b => b.Category == category) : carModels;
+            
             return View(carModels);
+        }
+
+        public IActionResult Catalogue2(string? category, string? brand, string? type)
+        {
+            var carModels = from c in _context.Carmodels select c;
+
+            // On évite les if avec des ternaires.
+            carModels = (!String.IsNullOrEmpty(brand)) ? carModels.Where(b => b.Brand == brand) : carModels;
+            carModels = (!String.IsNullOrEmpty(type)) ? carModels.Where(b => b.Type == type) : carModels;
+            carModels = (!String.IsNullOrEmpty(category)) ? carModels.Where(b => b.Category == category) : carModels;
+
+            ClientCatalogueViewModel clientCatalogueViewModel = new()
+            {
+                Carmodels = carModels,
+                Cars = (from c in _context.Cars select c).ToList(),
+                SelectedBrand = brand,
+                SelectedType = type,
+                SelectedCategory = category,
+                Brands = _context.Carmodels.Select(c => c.Brand).Distinct(),
+                Types = _context.Carmodels.Select(c => c.Type).Distinct(),
+                Categories = _context.Carmodels.Select(c => c.Category).Distinct()
+            };
+            
+            return View(clientCatalogueViewModel);
         }
 
     }
