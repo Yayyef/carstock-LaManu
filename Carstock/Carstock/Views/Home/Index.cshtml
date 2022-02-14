@@ -1,8 +1,66 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Accueil";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="d-flex justify-content-center">
+        <button id="c1" class="btn btn-outline-secondary">All Categories</button>
+        <button id="c2" class="btn btn-outline-secondary">New Arrival</button>
+        <button id="c3" class="btn btn-outline-secondary">Offers</button>
+    </div>
+</div>
+
+<div id="banner">
+    <!-- Afficher bannière -->
+    <h1>GET THE CAR of YOUR <br>FUTURE</h1>
+    <p>Find all cars you need In your daily life</p>
+    <button id="buynow" class="btn">Buy now <i class="bi bi-basket-fill"></i></button>
+    <button id="catalogue" class="btn">Our Catalogue</button>
+</div>
+
+<div class="car-product text-center">
+    <p>EXPLORE AWESOME PRODUCTS</p>
+    <h4>RECOMMENDED FOR YOU</h4>
+    <!-- Afficher voiture recommendées -->
+    <button class="ep btn">Explore More Products</button>
+</div>
+
+<div class="underbanner row text-center">
+    <div class="col">
+        <h4>Get the best car with us <br /> We offer a Free try ride</h4>
+    </div>
+    <div class="col">
+        <button class="banner-btn btn">Book a Ride</button>
+    </div>
+</div>
+
+<div class="car-product text-center">
+    <p>STRAIGHT FROM THE FACTORY</p>
+    <h4>NEW COLLECTION</h4>
+    <!-- Afficher le nouvelle collection -->
+    <button class="ep btn">Explore Other Products</button>
+</div>
+
+<div class="underbanner row text-center">
+    <div class="col">
+        <h4>Sales on super cars <br /> Get 10% Off with cash payments</h4>
+    </div>
+    <div class="col">
+        <button class="banner-btn btn">Start Shopping</button>
+    </div>
+</div>
+
+<div class="car-product text-center">
+    <p>TOP PRODUCTS</p>
+    <h4>TRENDING THIS WEEK</h4>
+    <!-- Afficher les voitures en vogues -->
+</div>
+
+<div class="underbanner row text-center">
+    <div class="col">
+        <h4>Contact us for more info <br /> Available 24/7</h4>
+    </div>
+    <div class="col">
+        <button class="banner-btn btn">Contact Us</button>
+    </div>
 </div>

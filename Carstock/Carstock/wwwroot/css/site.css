@@ -34,3 +34,53 @@ nav {
 ul {
     transform: translateY(5px);
 }
+
+#c1, #c2, #c3 {
+    width: 200px;
+    margin-left: 15px;
+}
+
+#banner {
+    background-color: grey;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#buynow {
+    width: 120px;
+    height: 50px;
+    margin-left: 30px;
+    background-color: darkorange;
+    color: white;
+}
+
+#catalogue {
+    width: 200px;
+    height: 50px;
+    margin-left: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.car-product {
+    margin-top: 50px;
+}
+
+.ep {
+    width: 230px;
+    height: 60px;
+    border: 1px solid black;
+}
+
+.banner-btn {
+    width: 230px;
+    height: 60px;
+    border: 1px solid;
+    color: white;
+}
+
+.underbanner {
+    margin-top: 20px;
+    color: white;
+    background-color: grey;
+}
