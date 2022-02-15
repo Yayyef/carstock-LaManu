@@ -1,6 +1,7 @@
-﻿@{
+﻿@model IEnumerable<Car>
+@{
 	ViewData["Title"] = "Stock";
-	var carmodels = ViewData["Carmodel"] as List<Carmodel>;
+	//var carmodels = ViewData["Carmodel"] as List<Carmodel>;
 }
 
 <h2>Stock</h2>
@@ -12,7 +13,63 @@
 			<th>Brand</th>
 			<th>Model</th>
 			<th>Price</th>
-			<th>Stock</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var car in Model)
+		{
+			<tr>
+			<td><img src="@car.IdModelNavigation.Image" style="height:50px; width:75px;"/></td>
+			<td>@car.IdModelNavigation.Brand</td>
+			<td>@car.IdModelNavigation.Model</td>
+			<td>@car.IdModelNavigation.Price €</td>
+			<td><a class="btn btn-danger" asp-controller="Admin" asp-action="RemoveCar" asp-route-id="@car.IdCar">Delete</a></td>
+			</tr>
+		}
+	</tbody>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h2>Stock</h2>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th>Image</th>
+			<th>Brand</th>
+			<th>Model</th>
+			<th>Price</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,8 +80,8 @@
 			<td>@carmodel.Brand</td>
 			<td>@carmodel.Model</td>
 			<td>@carmodel.Price €</td>
-			<td>Stock</td>
+			<td>Sold out</td>
 			</tr>
 		}
 	</tbody>
-</table>
+</table>*@

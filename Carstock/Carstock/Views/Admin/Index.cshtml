@@ -1,28 +1,40 @@
 ﻿@model Admin;
 @{
-	ViewData["Title"] = "Admin Home";
+	ViewData["Title"] = "Admin - Home";
 }
 
 <ul class="nav flex-column">
+
+    <h3>Admin</h3>
 @*    @if (@Model.Status == true)
     {*@
       <li class="nav-item">
-        <a class="nav-link active" asp-controller="Admin" asp-action="AddAdmin">Ajouter admin</a>
+        <a class="nav-link active" asp-controller="Admin" asp-action="AddAdmin">New admin</a>
       </li>
     @*}*@
   <li class="nav-item">
     <a class="nav-link" asp-controller="Admin" asp-action="AdminList">List Admin</a>
   </li>
+  <h3>Stock</h3>
   <li class="nav-item">
-    <a class="nav-link" href="#">Car list</a>
+    <a class="nav-link" asp-controller="Admin" asp-action="DisplayStock">Display Stock</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Users</a>
+    <a class="nav-link" asp-controller="Admin" asp-action="AddCar">Add car</a>
   </li>
-    <li class="nav-item">
-    <a class="nav-link" asp-controller="Admin" asp-action="DisplayStock">Stock</a>
+  <h3>Customers</h3>
+  <li class="nav-item">
+    <a class="nav-link" asp-controller="Admin" asp-action="DisplayCustomers">Customers</a>
   </li>
-    <li class="nav-item">
+  <h3>Models</h3>
+  <li class="nav-item">
+        <a class="nav-link" asp-controller="Admin" asp-action="AddModel">New model</a>
+  </li>
+  <h3>Purchases</h3>
+  <li class="nav-item">
+    <a class="nav-link" asp-controller="Admin" asp-action="DisplayPurchases">Purchases list</a>
+  </li>
+@*<li class="nav-item">
     <a class="nav-link" href="#">Disabled</a>
-  </li>
+  </li>*@
 </ul>
