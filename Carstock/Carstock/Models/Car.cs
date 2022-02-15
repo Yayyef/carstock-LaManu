@@ -7,9 +7,9 @@ namespace Carstock.Models
     {
         public int IdCar { get; set; }
         public int? IdCustomer { get; set; }
-        public int IdModel { get; set; }
+        public int? IdModel { get; set; }
 
         public virtual Customer? IdCustomerNavigation { get; set; }
-        public virtual Carmodel IdModelNavigation { get; set; } = null!;
+        public virtual Carmodel? IdModelNavigation { get; set; } = null!;
     }
 }

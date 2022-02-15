@@ -1,0 +1,95 @@
+﻿@using Microsoft.EntityFrameworkCore
+
+@model IEnumerable<Carmodel>
+
+@{
+    ViewData["Title"] = "Choose Your New Car";
+    var brands = ViewBag.Brands;
+    var types = ViewBag.Types;
+    var categories = ViewBag.Categories;
+
+    var selectedBrand = ViewData["selectedBrand"];
+    var selectedType = ViewData["selectedType"];
+    var selectedCategory = ViewData["selectedCategory"];
+}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        @*BRAND*@
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Brand
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" asp-route-type="@selectedType" asp-route-category="@selectedCategory">All</a></li>
+                        @foreach (var brand in brands)
+                        {
+                            <li><a class="dropdown-item" asp-route-brand="@brand" asp-route-type="@selectedType" asp-route-category="@selectedCategory">@brand</a></li>
+                        }
+          </ul>
+        </li>
+        @*TYPE*@
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Type
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" asp-route-brand="@selectedBrand" asp-route-category="@selectedCategory">All</a></li>
+                        @foreach (var type in types)
+                        {
+                            <li><a class="dropdown-item" asp-route-brand="@selectedBrand" asp-route-type="@type" asp-route-category="@selectedCategory">@type</a></li>
+                        }
+          </ul>
+        </li>
+        @*CATEGORY*@
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" asp-route-brand="@selectedBrand" asp-route-type="@selectedType">All</a></li>
+                        @foreach (var category in categories)
+                        {
+                            <li><a class="dropdown-item" asp-route-brand="@selectedBrand" asp-route-type="@selectedType" asp-route-category="@category">@category</a></li>
+                        }
+          </ul>
+        </li>
+        <li><a asp-route-Type="@selectedType" asp-route-category="@selectedCategory"><span class="badge bg-danger">@selectedBrand</span></a></li>
+        <li><a asp-route-brand="@selectedBrand" asp-route-category="@selectedCategory"><span class="badge bg-danger">@selectedType</span></a></li>
+        <li><a asp-route-brand="@selectedBrand" asp-route-type="@selectedType"><span class="badge bg-danger">@selectedCategory</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex flex-wrap mx-auto">
+    @foreach (var carmodel in Model)
+        {
+            <div class="card col-1 col-md-2 col-lg-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@carmodel.Brand @carmodel.Model</h5>
+                    <p class="card-text">@carmodel.Description</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span class="badge bg-secondary">@carmodel.Category.ToUpper()</span><span class="badge bg-secondary">@carmodel.Type.ToUpper()</span></li>
+                    <li class="list-group-item">@carmodel.Price €</li>
+                </ul>
+                <div class="card-body">
+                    <button class="btn btn-primary" data-bs-target="#confirmation">Buy</button>
+                </div>
+            </div>
+        }
+</div>
+
+@*Fenêtre modale*@
+<div class="modal-dialog modal-dialog-centered" id="confirmation">
+  ...
+</div>
+

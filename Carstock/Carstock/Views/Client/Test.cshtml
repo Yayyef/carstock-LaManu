@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Car>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@foreach (Car car in Model)
+{
+    <p>@car.IdCar</p>
+    <p>@car.IdModelNavigation.Brand @car.IdModelNavigation.Model</p>
+
+}
