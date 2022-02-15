@@ -16,17 +16,16 @@
             </div>
 	        <div class="mb-3">
                 <label asp-for="@car.IdModelNavigation.Brand"></label>
-                <input asp-for="@car.IdModelNavigation.Brand" class="form-control"/>
+                <input asp-for="@car.IdModelNavigation.Brand" class="form-control" disabled/>
                 <span asp-validation-for="@car.IdModelNavigation.Brand" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="@car.IdModelNavigation.Model"></label>
-                <input type="text" asp-for="@car.IdModelNavigation.Model" class="form-control"/>
+                <input type="text" asp-for="@car.IdModelNavigation.Model" class="form-control" disabled/>
                 <span asp-validation-for="@car.IdModelNavigation.Model" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <input class="btn btn-primary"  type="submit" value="Delete"/>
-
             </div>
         }
 </form>
