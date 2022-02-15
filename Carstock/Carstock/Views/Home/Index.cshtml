@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Carmodel>
+
+@{
     ViewData["Title"] = "Accueil";
 }
 
@@ -19,10 +21,30 @@
     </div>
 </div>
 
-<div class="car-product text-center">
+<div class="car-product text-center">car
     <p>EXPLORE AWESOME PRODUCTS</p>
     <h4>RECOMMENDED FOR YOU</h4>
-    <!-- Afficher voiture recommendées -->
+    @{
+        int i = 0;
+    }
+    <div class="row row-cols-4" style="margin-left: 50px; margin-top:40px;">
+    @foreach(var car in Model)
+    {
+        if(i < 4)
+        {
+            i++;
+            <div class="col mb-5">
+                <div class="card" style="width: 18rem; height: 20rem;">
+                  <img src="./css/car_img/@car.Image" class="card-img-top">
+                  <div class="card-body">
+                    <h5 class="card-title">@car.Brand @car.Model</h5>
+                    <span class="badge rounded-pill bg-warning text-dark">@car.Price€</span>
+                  </div>
+                </div>
+            </div>
+        }
+    }
+    </div>
     <button class="ep btn">Explore More Products</button>
 </div>
 
@@ -58,7 +80,20 @@
 <div class="car-product text-center">
     <p>TOP PRODUCTS</p>
     <h4>TRENDING THIS WEEK</h4>
-    <!-- Afficher les voitures en vogues -->
+   <div class="row row-cols-4" style="margin-left: 50px; margin-top:40px;"> 
+    @foreach(var car in Model)
+    {
+        <div class="col mb-5">
+            <div class="card" style="width: 18rem; height: 20rem;">
+              <img src="./css/car_img/@car.Image" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">@car.Brand @car.Model</h5>
+                <span class="badge rounded-pill bg-warning text-dark">@car.Price€</span>
+              </div>
+            </div>
+        </div>
+    }
+    </div>
 </div>
 
 <div class="underbanner">
