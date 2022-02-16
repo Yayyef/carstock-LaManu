@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Admin>
+@{
+	ViewData["Title"] = "Admin List";
+}
+
+<table class="table" style="width:100%">
+	<thead>
+		<tr>
+			<th>Admin</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var adm in Model)
+		{
+			<tr>
+				<td>@adm.Name</td>
+				<td>@adm.Email</td>
+				<td><a class="btn btn-primary" asp-controller="Admin" asp-action="RemoveAdmin" asp-route-id="@adm.IdAdmin">Delete</a></td>
+			</tr>
+		}
+	</tbody>
+</table>

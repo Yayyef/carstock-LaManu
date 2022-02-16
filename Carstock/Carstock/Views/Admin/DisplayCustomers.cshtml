@@ -1,0 +1,28 @@
+﻿@{
+	ViewData["Title"] = "Userlist";
+	var customers = ViewData["Customers"] as List<Customer>;
+}
+
+
+<h2>All Users</h2>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Model</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var customer in customers)
+		{
+			<tr>
+				<td><b>@customer.Firstname @customer.Lastname</b><br />@customer.Email</td>
+				<td><a class="btn btn-primary" asp-controller="Admin" asp-action="Details" asp-route-id="@customer.IdCustomer">Details</a></td>
+				<td><a class="btn btn-danger" asp-controller="Admin" asp-action="Remove" asp-route-id="@customer.IdCustomer">Supprimer</a></td>
+			</tr>
+		}
+	</tbody>
+</table>
+
