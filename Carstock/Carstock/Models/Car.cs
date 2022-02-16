@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 
 namespace Carstock.Models
@@ -10,6 +11,7 @@ namespace Carstock.Models
         public int? IdModel { get; set; }
 
         public virtual Customer? IdCustomerNavigation { get; set; }
-        public virtual Carmodel? IdModelNavigation { get; set; } = null!;
+
+        public virtual Carmodel IdModelNavigation { get; set; } = null!;
     }
 }

@@ -1,0 +1,47 @@
+﻿@model Carmodel
+@{
+	ViewData["Title"] = "Edit model";
+    var carmodels = ViewData["carmodel"] as List<Carmodel>;
+}
+
+<form method="POST">
+	<div class="mb-3">
+        <label asp-for="Brand"></label>
+        <input asp-for="Brand" class="form-control"/>
+        <span asp-validation-for="Brand" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Model"></label>
+        <input type="text" asp-for="Model" class="form-control"/>
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Type"></label>
+        <input type="text" asp-for="Type" class="form-control"/>
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+        <div class="mb-3">
+        <label asp-for="Category"></label>
+        <input type="text" asp-for="Category" class="form-control"/>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price"></label>
+        <input type="number" asp-for="Price" class="form-control"/>
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Image"></label>
+        <input type="text" asp-for="Image" class="form-control">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <input class="btn btn-primary"  type="submit" value="Edit"/>
+    </div>
+</form>

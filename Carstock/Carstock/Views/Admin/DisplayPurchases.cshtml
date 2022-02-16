@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Car>
+@{
+	ViewData["Title"] = "Purchases";
+}
+
+<h2>Purchases</h2>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th></th>
+			<th>Article</th>
+			<th>Customer</th>
+			<th>Price</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var car in Model)
+		{
+			<tr>
+			<td><img src="@car.IdModelNavigation.Image" style="height:50px; width:75px;"/></td>
+			<td><b>@car.IdModelNavigation.Brand</b><br />@car.IdModelNavigation.Model</td>
+			<td>@car.IdCustomerNavigation.Firstname @car.IdCustomerNavigation.Lastname</td>
+			<td>@car.IdModelNavigation.Price €</td>
+			<td><a class="btn btn-danger" asp-controller="Admin" asp-action="RemoveCar" asp-route-id="@car.IdCar">Delete</a></td>
+			</tr>
+		}
+	</tbody>
+	</table>

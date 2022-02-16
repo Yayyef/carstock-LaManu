@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Car>
+@{
+	ViewData["Title"] = "Remove car";
+}
+
+<h2>Remove car from stock</h2>
+<div class="alert alert-danger" role="alert">
+  Voulez-vous vraiment supprimer cet article?
+</div>
+<form method="POST">
+    @foreach(var car in Model)
+		{
+            <div class="mb-3">
+            
+                <img src="@car.IdModelNavigation.Image" style="height:250px; width:375px;">
+            </div>
+	        <div class="mb-3">
+                <label asp-for="@car.IdModelNavigation.Brand"></label>
+                <input asp-for="@car.IdModelNavigation.Brand" class="form-control" disabled/>
+                <span asp-validation-for="@car.IdModelNavigation.Brand" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@car.IdModelNavigation.Model"></label>
+                <input type="text" asp-for="@car.IdModelNavigation.Model" class="form-control" disabled/>
+                <span asp-validation-for="@car.IdModelNavigation.Model" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary"  type="submit" value="Delete"/>
+            </div>
+        }
+</form>
