@@ -1,0 +1,47 @@
+﻿@model Car
+
+@{
+}
+
+<div class="container border rounded col-7 mx-auto">
+  <div class="row">
+    <div class="col-sm-4 bg-primary">
+      @Model.IdModelNavigation.Image
+    </div>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-8 col-sm-9">
+          <h2>@Model.IdModelNavigation.Brand @Model.IdModelNavigation.Model</h2>
+        </div>
+        <div class="col-4 col-sm-9">
+          <hr />
+        </div>
+        <div class="col-4 col-sm-9">
+          @Html.DisplayNameFor(model => model.IdCar) : @Model.IdCar
+        </div>
+        <div class="col-4 col-sm-9">
+          @Html.DisplayNameFor(model => model.IdModelNavigation.Type) : @Model.IdModelNavigation.Type.ToUpper()
+        </div>
+        <div class="col-4 col-sm-9">
+          @Html.DisplayNameFor(model => model.IdModelNavigation.Category) : @Model.IdModelNavigation.Category.ToUpper()
+        </div>
+        <div class="col-4 col-sm-9">
+          <hr />
+        </div>
+                <div class="col-4 col-sm-9">
+                    <form method="post">
+                        @*Pour que la méthode post fonctionne correctement, il faut spécifier au niveau du boutton le paramètre de la fonction nécéssaire à la recherche de la voiture à acheter. Sinon asp.net essaye de chercher ailleurs le paramètres et ne trouve pas l'objet correspondant.*@
+                        <button asp-route-carId="@Model.IdCar" class="btn btn-danger">Purchase</button>
+                        <a asp-controller="Client" asp-action="Catalogue" name="carId">Back to Catalogue</a>
+                    </form>
+                </div>
+        </div>
+        <div class="col-4 col-sm-9 bg-warning">
+          <hr />
+        </div>
+    </div>
+  </div>
+</div>
+
+
+

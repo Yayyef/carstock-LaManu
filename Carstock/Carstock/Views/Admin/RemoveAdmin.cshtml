@@ -1,0 +1,43 @@
+﻿@model Admin
+@{
+	ViewData["Title"] = "Remove Admin";
+}
+
+
+
+<h2>Delete Admin</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" disabled/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" disabled/>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+        <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" disabled/>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        Super Admin
+        <div class="form-check">
+          <input class="form-check-input" type="radio" asp-for="@Model.Status" id="flexRadioDefault1" value="true" disabled>
+          <label class="form-check-label" for="flexRadioDefault1">
+            Yes
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" asp-for="@Model.Status" id="flexRadioDefault2" checked value="false" disabled>
+          <label class="form-check-label" for="flexRadioDefault2">
+            No
+          </label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Delete"/>
+    </div>
+</form>
