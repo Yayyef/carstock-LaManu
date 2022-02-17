@@ -11,16 +11,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<carstockContext>(options => options.UseSqlServer(
 builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDbContext<carstockContext>(option => option.UseSqlServer(
-    builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
-
-
-builder.Services.AddDbContext<carstockContext>(options => options.UseSqlServer(
-builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {

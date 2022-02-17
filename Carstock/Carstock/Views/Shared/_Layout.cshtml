@@ -13,7 +13,9 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Carstock</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img  src="@Url.Content("~/Content/Img/carstock_logo.png")"  class="rounded-circle"height="40" width="40" asp-append-version="true" /> 
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,7 +28,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                         </li>*@
-
                         <li class="nav-item">
                             <div class="input-group mb-3">
                                 <input id="search" type="text" class="form-control" placeholder="Search For Products, Brands & Categories" aria-label="searchProduct" aria-describedby="searchIcon">
