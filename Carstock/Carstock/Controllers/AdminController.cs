@@ -204,7 +204,7 @@ namespace Carstock.Controllers
         // Display purchases
         public IActionResult DisplayPurchases()
         {
-            var purchases = _context.Cars.Include(c => c.IdModelNavigation).Include(a => a.IdCustomerNavigation).Where(x => x.IdCustomer != null).OrderBy(x => x.IdModelNavigation.Brand);
+            var purchases = _context.Cars.Include(c => c.IdModelNavigation).Include(a => a.IdCustomerNavigation).Where(x => x.IdCustomer != null).Where(s => s.Status == true).OrderBy(x => x.IdModelNavigation.Brand);
             return View(purchases);
         }
 

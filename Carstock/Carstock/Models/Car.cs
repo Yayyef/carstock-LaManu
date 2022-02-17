@@ -10,6 +10,7 @@ namespace Carstock.Models
         public int? IdCustomer { get; set; }
         public int? IdModel { get; set; }
 
+        public bool Status { get; set; }
         public virtual Customer? IdCustomerNavigation { get; set; }
 
         public virtual Carmodel IdModelNavigation { get; set; } = null!;
